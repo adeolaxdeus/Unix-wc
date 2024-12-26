@@ -11,6 +11,7 @@ int (*get_op_func(const char *option))(const char *)
 {
 	op_t ops[] = {
 		{"-c", byte_count},
+		{"-l", line_count},
 		{NULL, NULL}
 	};
 	int i;
