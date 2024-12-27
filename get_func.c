@@ -13,6 +13,7 @@ int (*get_op_func(const char *option))(const char *)
 		{"-c", byte_count},
 		{"-l", line_count},
 		{"-w", word_count},
+		{"-m", char_count},
 		{NULL, NULL}
 	};
 	int i;

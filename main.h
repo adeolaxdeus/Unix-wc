@@ -14,5 +14,6 @@ int (*get_op_func(const char *))(const char *);
 int byte_count(const char *);
 int line_count(const char *);
 int word_count(const char *);
+int char_count(const char *);
 
 #endif

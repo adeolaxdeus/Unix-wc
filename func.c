@@ -155,3 +155,29 @@ int word_count(const char *filename)
 	}
 	return (0);
 }
+
+int char_count(const char *filename)
+{
+	char *c;
+	int fd;
+	size_t file_char;
+	ssize_t numread;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("open");
+		return (-1);
+	}
+	while ((numread = read(fd, &c, 1)) > 0)
+	{
+		file_char++;
+	}
+	if (numread == -1)
+	{
+		perror("read");
+		return (-1);
+	}
+	printf("\t%lu %s\n", file_char, filename);
+	return (0);
+}
