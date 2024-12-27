@@ -7,7 +7,7 @@
  *
  * Return: Pointer to associated function
  */
-int (*get_op_func(const char *option))(const char *)
+ssize_t (*get_op_func(const char *option))(const char *)
 {
 	op_t ops[] = {
 		{"-c", byte_count},

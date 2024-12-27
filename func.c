@@ -8,12 +8,12 @@
 #include <unistd.h>
 #define BUF_SIZE 1024
 /**
- * byte_count -  Outputs the number of byte in a file
+ * byte_count - Count the number of byte in a file
  * @filename:  File to be read
  *
- * Return: 0 on success otherwise -1 on error
+ * Return: Number of byte(s) on success otherwise -1 on error
  */
-int byte_count(const char *filename)
+ssize_t byte_count(const char *filename)
 {
 	int fd;
 	off_t file_size;
@@ -31,22 +31,21 @@ int byte_count(const char *filename)
 		close(fd);
 		return (-1);
 	}
-	printf("\t%lu %s\n", file_size, filename);
 	if (close(fd) == -1)
 	{
 		perror("close");
 		return (-1);
 	}
-	return (0);
+	return (file_size);
 }
 
 /**
- * line_count - Output the number of lines in a file
- * @filename: File to be read
+ * line_count - Count the number of lines in a file
+ * @filename: Name of file to count number of lines from
  *
- * Return: 0 on success otherwise -1 on error
+ * Return: Number of lines  on success otherwise -1 on error
  */
-int line_count(const char *filename)
+ssize_t line_count(const char *filename)
 {
 	int fd;
 	size_t newline_count = 0, i = 0;
@@ -83,22 +82,21 @@ int line_count(const char *filename)
 		return (-1);
 	}
 	free(buffer);
-	printf("\t%lu %s\n", newline_count, filename);
 	if (close(fd) == -1)
 	{
 		perror("close");
 		return (-1);
 	}
-	return (0);
+	return (newline_count);
 }
 
 /**
  * word_count - Find the number of words in a file
- * @filename: File to be read
+ * @filename: Name of file to count words from
  *
  * Return: Number of words in a file on success otherwise -1 on failure
  */
-int word_count(const char *filename)
+ssize_t word_count(const char *filename)
 {
 	int fd, in_word = 0;
 	char *buffer;
@@ -147,16 +145,21 @@ int word_count(const char *filename)
 		return (-1);
 	}
 	free(buffer);
-	printf("\t%lu %s\n", word_num, filename);
 	if (close(fd) == -1)
 	{
 		perror("close");
 		return (-1);
 	}
-	return (0);
+	return (word_num);
 }
 
-int char_count(const char *filename)
+/**
+ * char_count - Count the number of characters in a file
+ * @filename:  The name of the file to count characters from
+ *
+ * Return:  Number of characters on success otherwise -1  on failure
+ */
+ssize_t char_count(const char *filename)
 {
 	char *c;
 	int fd;
@@ -178,6 +181,5 @@ int char_count(const char *filename)
 		perror("read");
 		return (-1);
 	}
-	printf("\t%lu %s\n", file_char, filename);
-	return (0);
+	return (file_char);
 }

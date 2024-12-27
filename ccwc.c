@@ -12,7 +12,7 @@ int main(int ac, char **av)
 {
 	const char *filename = av[2];
 	const char *option = av[1];
-	int (*func_ptr)(const char *);
+	ssize_t (*func_ptr)(const char *);
 	(void) ac;
 
 	func_ptr = get_op_func(option);
@@ -21,5 +21,6 @@ int main(int ac, char **av)
 		printf("Invalid option %s\n", option);
 		return (-1);
 	}
-	return (func_ptr(filename));
+	printf("%lu %s\n", func_ptr(filename), filename);
+	return (0);
 }

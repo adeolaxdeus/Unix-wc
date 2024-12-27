@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <sys/types.h>
 /**
  * struct op - Struct op
  * @op: The operator
@@ -8,12 +9,12 @@
 typedef struct op
 {
 	char *op;
-	int (*f)(const char *);
+	ssize_t (*f)(const char *);
 } op_t;
-int (*get_op_func(const char *))(const char *);
-int byte_count(const char *);
-int line_count(const char *);
-int word_count(const char *);
-int char_count(const char *);
+ssize_t (*get_op_func(const char *))(const char *);
+ssize_t byte_count(const char *);
+ssize_t line_count(const char *);
+ssize_t word_count(const char *);
+ssize_t char_count(const char *);
 
 #endif
