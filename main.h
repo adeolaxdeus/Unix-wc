@@ -9,12 +9,12 @@
 typedef struct op
 {
 	char *op;
-	ssize_t (*f)(const char *);
+	ssize_t (*f)(int);
 } op_t;
-ssize_t (*get_op_func(const char *))(const char *);
-ssize_t byte_count(const char *);
-ssize_t line_count(const char *);
-ssize_t word_count(const char *);
-ssize_t char_count(const char *);
+ssize_t (*get_op_func(const char *))(int);
+ssize_t byte_count(int);
+ssize_t line_count(int);
+ssize_t word_count(int);
+ssize_t char_count(int);
 
 #endif
